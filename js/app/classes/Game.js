@@ -1,6 +1,6 @@
-define(['baseclass','Display'],function(Class,Display){
+define(['baseclass','Display','Assets',],function(Class,Display,Assets){
 	var running = false;
-	var title,width,height;
+	var title,width,height,g,display,assets,canvas,imageloader;
 	var Game = Class.extend({
 		init:function(_title,_width,_height){
 			title = this.title = _title;
@@ -9,14 +9,22 @@ define(['baseclass','Display'],function(Class,Display){
 		}
 	});
 	function init(){
-		var display = new Display(title,width,height);
+		display = new Display(title,width,height);		
+		assets = new Assets();
 	}
 	
 	function tick(){
 		
 	}
 	function render(){
-		
+		g = display.getGraphics();
+		//Clear Screen
+		g.clearRect(0,0,width,height);
+		//Draw Here!
+
+		g.drawImage(assets.player.sheet,assets.player.x,assets.player.y,assets.player.width,assets.player.height,20,10,assets.player.width,assets.player.height);
+     
+		//End Drawing
 	}
 	function loop(){
 		if(running){
@@ -34,10 +42,10 @@ define(['baseclass','Display'],function(Class,Display){
 		if(running)return;
 		running = true;
 		this.run();
-	}
+	};
 	Game.prototype.stop = function(){
 		if(!running)return;
 		running = false;
-	}
+	};
 	return Game;
 });

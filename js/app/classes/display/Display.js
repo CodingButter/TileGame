@@ -1,24 +1,24 @@
 define(['jquery','baseclass'],function($,Class){
-	
+	var canvas,title,width,height,graphics;
 	var Display = Class.extend({
-		init:function(title,width,height){
+		init:function(_title,_width,_height){
 			var _this = this;
-			this.title = title;
-			this.width = width;
-			this.height = height; 
+			title = this.title = _title;
+			width = this.width = _width;
+			height = this.height = _height; 
 		    function createDisplay(){
 				$("title").html(title);
 				
-				var canvas = $("<canvas></canvas>");
-				canvas.css({"width":width,"height":height});
+				canvas = $("<canvas></canvas>");
+				canvas.attr("id","canvas");	canvas.css({"width":width,"height":height});
 				$("body").append(canvas);
-				_this.canvas = canvas;
+				graphics = document.getElementById("canvas").getContext("2d");
 			}
 			createDisplay();
 		}
 	});
-	Display.prototype.getCanvas = function(){
-		return this.canvas;
+	Display.prototype.getGraphics = function(){
+		return graphics;
 	};
 	
 	return Display;
