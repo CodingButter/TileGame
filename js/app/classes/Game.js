@@ -1,6 +1,9 @@
-define(['baseclass','Display','Assets',],function(Class,Display,Assets){
+define(['baseclass','Display','Assets','GameState','MenuState'],function(Class,Display,Assets,GameState,MenuState){
 	var running = false;
 	var title,width,height,g,display,assets,canvas,imageloader;
+	
+	//Sates
+	var gameState,menuState;
 	var Game = Class.extend({
 		init:function(_title,_width,_height){
 			title = this.title = _title;
@@ -11,31 +14,56 @@ define(['baseclass','Display','Assets',],function(Class,Display,Assets){
 	function init(){
 		display = new Display(title,width,height);		
 		assets = new Assets();
-	}
-	
-	function tick(){
 		
+		gameState = new GameState();
+		menuState = new MenuState();
+		window.State.setState(gameState);
+	}
+	function tick(){
+		if(window.State.getState() !== null)
+			window.State.getState().tick();
 	}
 	function render(){
 		g = display.getGraphics();
 		//Clear Screen
 		g.clearRect(0,0,width,height);
-		//Draw Here!
-
-		g.drawImage(assets.player.sheet,assets.player.x,assets.player.y,assets.player.width,assets.player.height,20,10,assets.player.width,assets.player.height);
-     
+		//Draw Here
+     	if(window.State.getState() !== null)
+			window.State.getState().render(g);
 		//End Drawing
-	}
-	function loop(){
-		if(running){
-			tick();
-			render();
-			setTimeout(loop,17);
-		}
 	}
 	Game.prototype.run = function(){
 		init();
 		
+		var fps = 30;
+		var timePerTick = 1000/fps;
+		var delta = 0;
+		var now;
+		var n = new Date();
+		var lastTime = n.getTime();
+		var timer = 0;
+		var ticks = 0;
+		function loop(){
+			if(running){
+				var cd = new Date();
+				now =  cd.getTime();
+				delta += (now - lastTime)/timePerTick;
+				timer += now - lastTime;
+				lastTime = now;
+				if(delta >= 1){
+					tick();
+					render();
+					ticks++;
+					delta--;
+				}
+				if(timer >= 1000){
+					//console.log(ticks);
+					ticks = 0;
+					timer = 0;
+				}
+				window.requestAnimationFrame(loop);
+			}
+		}
 		loop();
 	};
 	Game.prototype.start = function(){

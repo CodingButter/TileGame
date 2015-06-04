@@ -12,7 +12,6 @@ define(["jquery","baseclass"],function($,Class){
 			loaded = true;
 		};
 		image.src = path;
-		console.log(image);
 		return image;
 	};
 	return ImageLoader;
