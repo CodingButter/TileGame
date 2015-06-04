@@ -1,8 +1,9 @@
-define(['State','Assets'],function(State,Assets){
+define(['State','Assets',"Player"],function(State,Assets,Player){
 	var assets = new Assets();
 	var GameState = State.extend({
 		init:function(){
 			//this._super();
+			this.player = new Player(0,0);
 		}
 	});
 	//Override;
@@ -10,7 +11,8 @@ define(['State','Assets'],function(State,Assets){
 		
 	};
 	//Override;
-	GameState.prototype.render = function(g){	g.drawImage(assets.player.sheet,assets.player.x,assets.player.y,assets.player.width,assets.player.height,10,10,assets.player.width,assets.player.height);
+	GameState.prototype.render = function(g){
+		this.player.render();
 	};
 	return GameState;
 });

@@ -20,6 +20,11 @@ define(['jquery','baseclass'],function($,Class){
 	Display.prototype.getGraphics = function(){
 		return graphics;
 	};
+	CanvasRenderingContext2D.prototype.myDrawImage = function(asset,_x,_y)	{
+		this.drawImage(asset.sheet,asset.x,asset.y,
+					asset.width,asset.height,_x,_y,
+					asset.width,asset.height);
+	};
 	
 	return Display;
 });
