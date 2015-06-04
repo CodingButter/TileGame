@@ -18,7 +18,7 @@ requirejs.config({
 		"GameCamera":"app/classes/gfx/GameCamera",
 		"ImageLoader":"app/classes/gfx/ImageLoader",
 		"SpriteSheet":"app/classes/gfx/SpriteSheet",
-		"KeyManager":"app/class/input/KeyManager",
+		"KeyManager":"app/classes/input/KeyManager",
 		"GameState":"app/classes/states/GameState",
 		"MenuState":"app/classes/states/MenuState",
 		"SettingsState":"app/classes/states/SettingsState",

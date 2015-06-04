@@ -1,24 +1,31 @@
-define(['baseclass','Display','Assets','GameState','MenuState'],function(Class,Display,Assets,GameState,MenuState){
+define(['baseclass','Display','Assets','GameState','MenuState','SettingsState','KeyManager'],function(Class,Display,Assets,GameState,MenuState,SettingsState,KeyManager){
+	var _this;
 	var running = false;
+	var keyManager;
 	var title,width,height,g,display,canvas,imageloader;
 	
 	//Sates
-	var gameState,menuState;
+	var gameState,menuState,settingsState;
 	var Game = Class.extend({
 		init:function(_title,_width,_height){
+			_this = this;
 			title = this.title = _title;
 			width = this.width = _width;
 			height = this.height = _height;
+			keyManager = new KeyManager();
 		}
 	});
 	function init(){
 		display = new Display(title,width,height);
 		
-		gameState = new GameState();
-		menuState = new MenuState();
+		gameState = new GameState(_this);
+		menuState = new MenuState(_this);
+		settingsState = new SettingsState(_this);
 		window.State.setState(gameState);
 	}
 	function tick(){
+		keyManager.tick();
+		
 		if(window.State.getState() !== null)
 			window.State.getState().tick();
 	}
@@ -65,6 +72,11 @@ define(['baseclass','Display','Assets','GameState','MenuState'],function(Class,D
 		}
 		loop();
 	};
+	
+	Game.prototype.getKeyManager = function(){
+		return keyManager;
+	};
+	
 	Game.prototype.start = function(){
 		if(running)return;
 		running = true;

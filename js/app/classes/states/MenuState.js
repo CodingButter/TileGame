@@ -1,7 +1,7 @@
 define(['State'],function(State){
 	var MenuState = State.extend({
-		init:function(){
-			//this._super();
+		init:function(_game){
+			this._super(_game);
 		}
 	});
 	//Override;

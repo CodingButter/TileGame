@@ -2,8 +2,8 @@ define(['baseclass'],function(Class){
 	var currentState = null;
 	window.State = {};
 	var State = Class.extend({
-		init:function(){
-			throw new Error("Cannot create an instance of the State class");
+		init:function(_game){
+			this.game = _game;
 		}
 	});
 	window.State.setState = function(state){

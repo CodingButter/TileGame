@@ -1,7 +1,7 @@
 define(['State'],function(State){
 	var SettingsState = State.extend({
-		init:function(){
-			//this._super();
+		init:function(_game){
+			this._super(_game);
 		}
 	});
 	//Override;

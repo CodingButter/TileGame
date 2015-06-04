@@ -1,9 +1,9 @@
 define(['State','Assets',"Player"],function(State,Assets,Player){
 	var player;
 	var GameState = State.extend({
-		init:function(){
-			//this._super();
-			player = new Player(30,60);
+		init:function(_game){
+			this._super(_game);
+			player = new Player(this.game,30,60);
 		}
 	});
 	//Override;
