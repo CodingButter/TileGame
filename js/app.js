@@ -11,7 +11,7 @@ requirejs.config({
 		"webaudio":"libs/webaudio",
 		//Classes
 		"Display":"app/classes/display/Display",
-		"Entities":"app/classes/entities/Entity",
+		"Entity":"app/classes/entities/Entity",
 		"Creature":"app/classes/entities/creatures/Creature",
 		"Player":"app/classes/entities/creatures/Player",
 		"Assets":"app/classes/gfx/Assets",

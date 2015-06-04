@@ -1,5 +1,4 @@
-define(['State','Assets'],function(State,Assets){
-	var assets = new Assets();
+define(['State'],function(State){
 	var SettingsState = State.extend({
 		init:function(){
 			//this._super();

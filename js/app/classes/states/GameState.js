@@ -1,19 +1,18 @@
 define(['State','Assets',"Player"],function(State,Assets,Player){
-	var assets = new Assets();
 	var player;
 	var GameState = State.extend({
 		init:function(){
 			//this._super();
-			player = new Player(0,0);
+			player = new Player(30,60);
 		}
 	});
 	//Override;
 	GameState.prototype.tick = function(){
-		
+		player.tick();
 	};
 	//Override;
 	GameState.prototype.render = function(g){
-		player.render();
+		player.render(g);
 	};
 	return GameState;
 });

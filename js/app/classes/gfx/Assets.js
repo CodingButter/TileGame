@@ -15,6 +15,5 @@ define(['jquery','baseclass','ImageLoader','SpriteSheet'],function($,Class,Image
 		this.stone = sheet.crop(width * 3,0,width,height);
 		this.tree = sheet.crop(width * 4,0,width,height);
 	};
-	
-	return Assets;
+	window.Assets = new Assets();
 });

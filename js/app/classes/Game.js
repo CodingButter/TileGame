@@ -1,6 +1,6 @@
 define(['baseclass','Display','Assets','GameState','MenuState'],function(Class,Display,Assets,GameState,MenuState){
 	var running = false;
-	var title,width,height,g,display,assets,canvas,imageloader;
+	var title,width,height,g,display,canvas,imageloader;
 	
 	//Sates
 	var gameState,menuState;
@@ -12,8 +12,7 @@ define(['baseclass','Display','Assets','GameState','MenuState'],function(Class,D
 		}
 	});
 	function init(){
-		display = new Display(title,width,height);		
-		assets = new Assets();
+		display = new Display(title,width,height);
 		
 		gameState = new GameState();
 		menuState = new MenuState();
