@@ -4,7 +4,7 @@ define(['State','Assets',"Player",'TileLoader','World'],function(State,Assets,Pl
 		init:function(_game){
 			this._super(_game);
 			game = _game;
-			world = new World(_game,"res/worlds/world1.txt");
+			world = new World(_game,"http://www.anditson.com/world1.txt");
 			player = new Player(this.game,world.getSpawnX(),world.getSpawnY());
 		}
 	});
