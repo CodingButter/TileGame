@@ -9,9 +9,9 @@ define(['State','Assets',"Player",'TileLoader','World'],function(State,Assets,Pl
 		}
 	});
 	//Override;
-	GameState.prototype.tick = function(){
-		world.tick();
-		player.tick();
+	GameState.prototype.tick = function(_dt){
+		world.tick(_dt);
+		player.tick(_dt);
 	};
 	//Override;
 	GameState.prototype.render = function(g){

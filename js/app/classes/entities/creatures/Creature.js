@@ -1,8 +1,11 @@
 define(['Entity'],function(Entity){
-	var DEFAULT_SPEED = 7.0,
+	//Private Variables
+	//Defaults
+	var DEFAULT_SPEED = 250,
 		DEFAULT_HEALTH = 10, 
 		DEFAULT_CREATURE_WIDTH = 64,
 		DEFAULT_CREATURE_HEIGHT = 64;
+	//Creature variables
 	var speed,health,xMove,yMove;
 	var Creature = Entity.extend({
 		init:function(_game,_x,_y, _width, _height){
@@ -13,15 +16,17 @@ define(['Entity'],function(Entity){
 			yMove = this.yMove = 0;
 		}
 	});
+	//Static Variables
+	Creature.DEFAULT_SPEED = DEFAULT_SPEED;
+	Creature.DEFAULT_HEALTH = DEFAULT_HEALTH;
+	Creature.DEFAULT_CREATURE_WIDTH = DEFAULT_CREATURE_WIDTH;
+	Creature.DEFAULT_CREATURE_HEIGHT = DEFAULT_CREATURE_HEIGHT;
 	
 	Creature.prototype.move = function(){
 		this.x += this.xMove;
 		this.y += this.yMove;
 	}
-	Creature.DEFAULT_SPEED = DEFAULT_SPEED;
-	Creature.DEFAULT_HEALTH = DEFAULT_HEALTH;
-	Creature.DEFAULT_CREATURE_WIDTH = DEFAULT_CREATURE_WIDTH;
-	Creature.DEFAULT_CREATURE_HEIGHT = DEFAULT_CREATURE_HEIGHT;
+	
 	Creature.prototype.getHealth = function(){
 			return health;
 	}

@@ -7,23 +7,23 @@ define(['Creature'],function(Creature){
 		}
 	});
 	
-	Player.prototype.tick = function(){
-		this.getInput();
+	Player.prototype.tick = function(_dt){
+		this.getInput(_dt);
 		this.move();
 		game.getGameCamera().centerOnEntity(this);
 	};
 	
-	Player.prototype.getInput = function(){
+	Player.prototype.getInput = function(_dt){
 		this.xMove = 0;
 		this.yMove = 0;
 		if(game.getKeyManager().up)
-			this.yMove = -this.speed;
+			this.yMove = -this.speed * _dt;
 		if(game.getKeyManager().down)
-			this.yMove = this.speed;
+			this.yMove = this.speed * _dt;
 		if(game.getKeyManager().left)
-			this.xMove = -this.speed;
+			this.xMove = -this.speed * _dt;
 		if(game.getKeyManager().right)
-			this.xMove = this.speed;
+			this.xMove = this.speed * _dt;
 	}
 	
 	Player.prototype.render = function(g){

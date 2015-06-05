@@ -1,12 +1,12 @@
+
 define(['Class'],function(Class){
-	var game,x,y,width,height;
 	var Entity = Class.extend({
-		init:function(_game, _x,_y,_width,_height){
-			x = this.x = _x;
-			y = this.y = _y;
-			width = this.width = _width;
-			height = this.height = _height;
-			game = this.game = _game;
+		init:function(_game, _x, _y, _width, _height){
+			this.x = _x;
+			this.y = _y;
+			this.width = _width;
+			this.height = _height;
+			this.game = _game;
 		}
 	});
 	Entity.prototype.tick = function(){};
@@ -35,7 +35,7 @@ define(['Class'],function(Class){
 	}
 	
 	Entity.prototype.getHeight = function(){
-			return height;
+			return this.height;
 	}
 	Entity.prototype.setHeight = function(_height){
 			height = _height;

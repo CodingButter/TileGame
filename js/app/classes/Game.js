@@ -26,11 +26,11 @@ define(['Class','Display','Assets','GameState','MenuState','SettingsState','KeyM
 		settingsState = new SettingsState(_this);
 		window.State.setState(gameState);
 	}
-	function tick(){
+	function tick(_dt){
 		keyManager.tick();
 		
 		if(window.State.getState() !== null)
-			window.State.getState().tick();
+			window.State.getState().tick(_dt);
 	}
 	function render(){
 		g = display.getGraphics();
@@ -44,7 +44,7 @@ define(['Class','Display','Assets','GameState','MenuState','SettingsState','KeyM
 	Game.prototype.run = function(){
 		init();
 		
-		var fps = 30;
+		var fps = 60;
 		var timePerTick = 1000/fps;
 		var delta = 0;
 		var now;
@@ -53,21 +53,21 @@ define(['Class','Display','Assets','GameState','MenuState','SettingsState','KeyM
 		var ticks = 0;
 		function loop(){
 			if(running){
-				now =  Date.now();
-				delta += (now - lastTime)/timePerTick;
-				timer += now - lastTime;
+				now = Date.now();
+				// Delta is the time since the last frame
+				delta = now - lastTime;
+				// Add the delta to our timer
+				timer += delta;
 				lastTime = now;
-				if(delta >= 1){
-					tick();
-					render();
-					ticks++;
-					delta--;
+
+				if(timer >= timePerTick) {
+				// Logic updates will need to know what the delta was.
+				dt = timer / 1000;
+				tick(dt);
+				render();
+				timer = 0;
 				}
-				if(timer >=5000){
-					console.log(ticks/5);
-					ticks = 0;
-					timer = 0;
-				}
+
 				window.requestAnimationFrame(loop);
 			}
 		}
