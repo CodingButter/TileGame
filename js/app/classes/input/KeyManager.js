@@ -1,4 +1,4 @@
-define(['baseclass'],function(Class){
+define(['Class'],function(Class){
 	
 	var keys = [];
 	

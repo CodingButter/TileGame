@@ -1,13 +1,10 @@
+
 requirejs.config({
 	"baseUrl":"js",
 	"paths":{
 		//Core Libraries
-		"underscore":"libs/underscore",
-		"baseclass":"libs/baseclass",
-		"class":"libs/class",
-		"keylistener":"libs/keylistener",
+		"Class":"libs/class",
 		"jquery":"libs/jquery",
-		"watch":"libs/watch",
 		"webaudio":"libs/webaudio",
 		//Classes
 		"Display":"app/classes/display/Display",
@@ -24,14 +21,15 @@ requirejs.config({
 		"SettingsState":"app/classes/states/SettingsState",
 		"State":"app/classes/states/State",
 		"DirtTile":"app/classes/tiles/DirtTile",
-		"GrassTile":"app/classes/tiles/RockTiles",
+		"GrassTile":"app/classes/tiles/GrassTile",
+		"RockTile":"app/classes/tiles/RockTile",
 		"Tile":"app/classes/tiles/Tile",
+		"TileLoader":"app/classes/tiles/TileLoader",
 		"Utils":"app/classes/utils/Utils",
 		"World":"app/classes/worlds/World",
 		"Game":"app/classes/Game",
 		"Launcher":"app/classes/Launcher"
 	}
 });
-
 // Load the main app module to start application
 require(['app/main']);

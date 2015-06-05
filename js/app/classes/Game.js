@@ -1,7 +1,8 @@
-define(['baseclass','Display','Assets','GameState','MenuState','SettingsState','KeyManager'],function(Class,Display,Assets,GameState,MenuState,SettingsState,KeyManager){
+define(['Class','Display','Assets','GameState','MenuState','SettingsState','KeyManager','GameCamera'],function(Class,Display,Assets,GameState,MenuState,SettingsState,KeyManager,GameCamera){
 	var _this;
 	var running = false;
 	var keyManager;
+	var gameCamera;
 	var title,width,height,g,display,canvas,imageloader;
 	
 	//Sates
@@ -10,14 +11,16 @@ define(['baseclass','Display','Assets','GameState','MenuState','SettingsState','
 		init:function(_title,_width,_height){
 			_this = this;
 			title = this.title = _title;
-			width = this.width = _width;
-			height = this.height = _height;
+			width = _width;
+			height = _height;
 			keyManager = new KeyManager();
 		}
 	});
 	function init(){
 		display = new Display(title,width,height);
+		window.Assets.init();
 		
+		gameCamera = new GameCamera(_this,0,0);
 		gameState = new GameState(_this);
 		menuState = new MenuState(_this);
 		settingsState = new SettingsState(_this);
@@ -45,14 +48,12 @@ define(['baseclass','Display','Assets','GameState','MenuState','SettingsState','
 		var timePerTick = 1000/fps;
 		var delta = 0;
 		var now;
-		var n = new Date();
-		var lastTime = n.getTime();
+		var lastTime = Date.now();
 		var timer = 0;
 		var ticks = 0;
 		function loop(){
 			if(running){
-				var cd = new Date();
-				now =  cd.getTime();
+				now =  Date.now();
 				delta += (now - lastTime)/timePerTick;
 				timer += now - lastTime;
 				lastTime = now;
@@ -62,8 +63,8 @@ define(['baseclass','Display','Assets','GameState','MenuState','SettingsState','
 					ticks++;
 					delta--;
 				}
-				if(timer >= 1000){
-					//console.log(ticks);
+				if(timer >=5000){
+					console.log(ticks/5);
 					ticks = 0;
 					timer = 0;
 				}
@@ -76,6 +77,9 @@ define(['baseclass','Display','Assets','GameState','MenuState','SettingsState','
 	Game.prototype.getKeyManager = function(){
 		return keyManager;
 	};
+	Game.prototype.getGameCamera = function(){
+		return gameCamera;
+	};
 	
 	Game.prototype.start = function(){
 		if(running)return;
@@ -86,5 +90,12 @@ define(['baseclass','Display','Assets','GameState','MenuState','SettingsState','
 		if(!running)return;
 		running = false;
 	};
+	Game.prototype.getWidth = function(){
+			return width;
+	}
+	Game.prototype.getHeight = function(){
+			return height;
+	}
+	
 	return Game;
 });

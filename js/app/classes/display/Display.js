@@ -1,4 +1,4 @@
-define(['jquery','baseclass'],function($,Class){
+define(['jquery','Class'],function($,Class){
 	var canvas,title,width,height,graphics;
 	var Display = Class.extend({
 		init:function(_title,_width,_height){
@@ -7,11 +7,9 @@ define(['jquery','baseclass'],function($,Class){
 			width = this.width = _width;
 			height = this.height = _height; 
 		    function createDisplay(){
-				$("title").html(title);
-				
-				canvas = $("<canvas></canvas>");
-				canvas.attr("id","canvas");	canvas.css({"width":width,"height":height});
-				$("body").append(canvas);
+				document.title = title;
+				var body = document.body
+				body.innerHTML = ("<canvas id='canvas' width='"+width+"' height='"+height+"'></canvas>");
 				graphics = document.getElementById("canvas").getContext("2d");
 			}
 			createDisplay();
@@ -20,10 +18,10 @@ define(['jquery','baseclass'],function($,Class){
 	Display.prototype.getGraphics = function(){
 		return graphics;
 	};
-	CanvasRenderingContext2D.prototype.myDrawImage = function(asset,_x,_y)	{
+	CanvasRenderingContext2D.prototype.myDrawImage = function(asset,_x,_y,_width,_height)	{
 		this.drawImage(asset.sheet,asset.x,asset.y,
 					asset.width,asset.height,_x,_y,
-					asset.width,asset.height);
+					_width,_height);
 	};
 	
 	return Display;

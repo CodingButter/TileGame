@@ -1,9 +1,8 @@
-define(['jquery','baseclass','ImageLoader','SpriteSheet'],function($,Class,ImageLoader,SpriteSheet){
-	var width = 16,height = 16;
+define(['jquery','Class','ImageLoader','SpriteSheet'],function($,Class,ImageLoader,SpriteSheet){
+	var width = 17,height = 17;
 	var sheet, imageloader;
 	var Assets = Class.extend({
 		init:function(){
-			this.init();
 		}
 	});
 	Assets.prototype.init = function(){

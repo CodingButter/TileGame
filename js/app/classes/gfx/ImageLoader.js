@@ -1,4 +1,4 @@
-define(["jquery","baseclass"],function($,Class){
+define(["Class"],function(Class){
 	var ImageLoader = Class.extend({
 		init:function(){
 			

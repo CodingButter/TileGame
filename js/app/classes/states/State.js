@@ -1,4 +1,4 @@
-define(['baseclass'],function(Class){
+define(['Class'],function(Class){
 	var currentState = null;
 	window.State = {};
 	var State = Class.extend({
