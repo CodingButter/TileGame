@@ -3,8 +3,8 @@ define(['Entity'],function(Entity){
 	//Defaults
 	var DEFAULT_SPEED = 250,
 		DEFAULT_HEALTH = 10, 
-		DEFAULT_CREATURE_WIDTH = 64,
-		DEFAULT_CREATURE_HEIGHT = 64;
+		DEFAULT_CREATURE_WIDTH = 32,
+		DEFAULT_CREATURE_HEIGHT = 32;
 	//Creature variables
 	var speed,health,xMove,yMove;
 	var Creature = Entity.extend({
@@ -23,8 +23,8 @@ define(['Entity'],function(Entity){
 	Creature.DEFAULT_CREATURE_HEIGHT = DEFAULT_CREATURE_HEIGHT;
 	
 	Creature.prototype.move = function(){
-		this.x += this.xMove;
-		this.y += this.yMove;
+		this.x += parseInt(this.xMove);
+		this.y += parseInt(this.yMove);
 	}
 	
 	Creature.prototype.getHealth = function(){

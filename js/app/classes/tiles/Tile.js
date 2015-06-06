@@ -1,6 +1,6 @@
 define(['Class'],function(Class){
 	var tiles = [];
-	var TILEWIDTH = 64, TILEHEIGHT = 64;
+	var TILEWIDTH = 32, TILEHEIGHT = 32;
 	var id;
 	var Tile = Class.extend({
 		init:function(_texture,_id){

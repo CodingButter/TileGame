@@ -18,7 +18,6 @@ define(['Class','Display','Assets','GameState','MenuState','SettingsState','KeyM
 	});
 	function init(){
 		display = new Display(title,width,height);
-		window.Assets.init();
 		
 		gameCamera = new GameCamera(_this,0,0);
 		gameState = new GameState(_this);
@@ -44,7 +43,7 @@ define(['Class','Display','Assets','GameState','MenuState','SettingsState','KeyM
 	Game.prototype.run = function(){
 		init();
 		
-		var fps = 60;
+		var fps = 20;
 		var timePerTick = 1000/fps;
 		var delta = 0;
 		var now;
