@@ -11,25 +11,25 @@ define(['Class'],function(Class){
 	GameCamera.prototype.centerOnEntity = function(e){
 		xOffset = e.getX() - game.getWidth()/2 + e.getWidth()/2;
 		yOffset = e.getY() - game.getHeight()/2 + e.getHeight()/2;
-	}
+	};
 	GameCamera.prototype.move = function(_xAmt,_yAmt){ 
 		xOffset += _xAmt;
 		yOffset += _yAmt;
-	}
+	};
 	
 	GameCamera.prototype.getxOffset = function(){
 			return xOffset;
-	}
-	GameCamera.prototype.setxOffset = function(_retuxOffset){
-			retuxOffset = _retuxOffset;
-	}
+	};
+	GameCamera.prototype.setxOffset = function(_xOffset){
+			xOffset = _xOffset;
+	};
 	
 	GameCamera.prototype.getyOffset = function(){
 			return yOffset;
-	}
+	};
 	GameCamera.prototype.setyOffset = function(_yOffset){
 			yOffset = _yOffset;
-	}
+	};
 	
 	return GameCamera;
 });	

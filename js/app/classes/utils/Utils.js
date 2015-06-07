@@ -18,8 +18,8 @@ define(['jquery','Class'],function($,Class){
 			}
 		});
 		return string;
-	}
+	};
 	
 	
-	window.Utils = new Utils();
+	return new Utils();
 });	

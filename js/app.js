@@ -1,4 +1,3 @@
-
 requirejs.config({
 	"baseUrl":"js",
 	"paths":{
@@ -23,12 +22,14 @@ requirejs.config({
 		"DirtTile":"app/classes/tiles/DirtTile",
 		"GrassTile":"app/classes/tiles/GrassTile",
 		"RockTile":"app/classes/tiles/RockTile",
+		"TreeTile":"app/classes/tiles/TreeTile",
 		"Tile":"app/classes/tiles/Tile",
 		"TileLoader":"app/classes/tiles/TileLoader",
 		"Utils":"app/classes/utils/Utils",
 		"World":"app/classes/worlds/World",
 		"Game":"app/classes/Game",
-		"Launcher":"app/classes/Launcher"
+		"Launcher":"app/classes/Launcher",
+		"Privacy":"libs/privacy"
 	}
 });
 // Load the main app module to start application

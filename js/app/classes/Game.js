@@ -1,16 +1,17 @@
-define(['Class','Display','Assets','GameState','MenuState','SettingsState','KeyManager','GameCamera'],function(Class,Display,Assets,GameState,MenuState,SettingsState,KeyManager,GameCamera){
-	var _this;
+define(['Class','Display','Assets','State','GameState','MenuState','SettingsState','KeyManager','GameCamera'],function(Class,Display,Assets,State,GameState,MenuState,SettingsState,KeyManager,GameCamera){
+	var _ = Privacy.createKeys();
+    var _this;
 	var running = false;
 	var keyManager;
 	var gameCamera;
-	var title,width,height,g,display,canvas,imageloader;
-	
+	var title,width,height,g,display,canvas;
+
 	//Sates
 	var gameState,menuState,settingsState;
 	var Game = Class.extend({
 		init:function(_title,_width,_height){
 			_this = this;
-			title = this.title = _title;
+			title = _title;
 			width = _width;
 			height = _height;
 			keyManager = new KeyManager();
@@ -18,26 +19,25 @@ define(['Class','Display','Assets','GameState','MenuState','SettingsState','KeyM
 	});
 	function init(){
 		display = new Display(title,width,height);
-		
 		gameCamera = new GameCamera(_this,0,0);
 		gameState = new GameState(_this);
 		menuState = new MenuState(_this);
 		settingsState = new SettingsState(_this);
-		window.State.setState(gameState);
+		State.setState(gameState);
 	}
 	function tick(_dt){
 		keyManager.tick();
 		
-		if(window.State.getState() !== null)
-			window.State.getState().tick(_dt);
+		if(State.getState() !== null)
+			State.getState().tick(_dt);
 	}
 	function render(){
 		g = display.getGraphics();
 		//Clear Screen
 		g.clearRect(0,0,width,height);
 		//Draw Here
-     	if(window.State.getState() !== null)
-			window.State.getState().render(g);
+     	if(State.getState() !== null)
+			State.getState().render(g);
 		//End Drawing
 	}
 	Game.prototype.run = function(){
@@ -91,10 +91,10 @@ define(['Class','Display','Assets','GameState','MenuState','SettingsState','KeyM
 	};
 	Game.prototype.getWidth = function(){
 			return width;
-	}
+	};
 	Game.prototype.getHeight = function(){
 			return height;
-	}
+	};
 	
 	return Game;
 });

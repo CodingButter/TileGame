@@ -1,15 +1,14 @@
 define(['Class'],function(Class){
 	var currentState = null;
-	window.State = {};
 	var State = Class.extend({
 		init:function(_game){
 			this.game = _game;
 		}
 	});
-	window.State.setState = function(state){
+	State.setState = function(state){
 		currentState = state;
 	};
-	window.State.getState = function(){
+	State.getState = function(){
 		return currentState;
 	};
 	State.prototype.tick = function(){};

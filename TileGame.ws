@@ -50,13 +50,9 @@
                 <File name="js\app\main.js" />
             </Folder>
             <Folder name="libs">
-                <File name="js\libs\baseclass.js" />
                 <File name="js\libs\class.js" />
                 <File name="js\libs\jquery.js" />
-                <File name="js\libs\keylistener.js" />
                 <File name="js\libs\require.js" />
-                <File name="js\libs\underscore.js" />
-                <File name="js\libs\watch.js" />
                 <File name="js\libs\webaudio.js" />
             </Folder>
             <File name="js\app.js" />

@@ -1,12 +1,11 @@
 define(['Class'],function(Class){
+	var _ = Privacy.createKeys();
 	var tiles = [];
-	var TILEWIDTH = 32, TILEHEIGHT = 32;
-	var id;
+	var TILEWIDTH = 64, TILEHEIGHT = 64;
 	var Tile = Class.extend({
 		init:function(_texture,_id){
 			this.texture = _texture;
 			id = _id;
-			
 			tiles[_id] = this;
 			Tile.tiles = tiles;
 		}
@@ -18,15 +17,15 @@ define(['Class'],function(Class){
 	
 	Tile.prototype.render = function(g,_x,_y){
 		g.myDrawImage(this.texture,_x,_y,TILEWIDTH,TILEHEIGHT);
-	}
+	};
 	
 	Tile.prototype.getId = function(){
 			return id;
-	}
+	};
 	
 	Tile.prototype.isSolid = function(){
 		return false;
-	}
+	};
 	
 	return Tile;
 });	
